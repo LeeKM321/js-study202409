@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var phone = {
+        company: '삼성',
+        color: '화이트',
+        price: 1200000,
+        model: '갤럭시 s24',
+      };
+
+      // 객체에서 사용하는 반복문 for ~ in
+      // 변수로 키값이 전달됨.
+      for (var data in phone) {
+        console.log(phone[data]);
+      }
+
+      // for ~ in은 배열에서도 사용이 가능하긴 함.
+      // 변수로 인덱스가 전달됨.
+      var arr = [1, 3, 5, 7, 9, 11];
+      for (var n in arr) {
+        console.log(n);
+      }
+
+      ///////////////////////////////////////////////////
+
+      // 객체 프로퍼티 유무 확인
+      console.log('merong' in phone);
+
+      var newKey = 'memory';
+      if (!(newKey in phone)) {
+        phone[newKey] = '32GB';
+      }
+
+      console.log(phone);
+    </script>
+  </body>
+</html>
