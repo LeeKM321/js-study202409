@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 함수의 선언
+      // 함수 이름은 동사적 의미가 내포되게 짓습니다.
+      function calcTotal(end) {
+        var total = 0;
+        for (var i = 1; i <= end; i++) {
+          total += i;
+        }
+        return total;
+      }
+
+      // 함수를 리터럴 방식으로 선언
+      var add = function (n1, n2) {
+        return n1 + n2;
+      };
+
+      // 함수의 호출
+      var result = calcTotal(10);
+      console.log(result);
+
+      // 자바스크립트 함수는 매개변수 개수를 다르게 주더라도 호출은 됩니다.
+      // 정상 작동은 기대하기 힘듭니다. (개수를 지켜서 전달해 주세요.)
+      var result2 = add(10, '야호');
+      console.log(result2);
+
+      ///////////////////////////////////////////////////////
+
+      function operateAll(n1, n2) {
+        // return [n1+n2, n1-n2 ...];
+        return {
+          plus: n1 + n2,
+          minus: n1 - n2,
+          multi: n1 * n2,
+          divide: n1 / n2,
+          mod: n1 % n2,
+        };
+      }
+
+      var result3 = operateAll(30, 6);
+      console.log(result3);
+    </script>
+  </body>
+</html>
