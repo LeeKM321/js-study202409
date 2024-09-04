@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 변수의 중복 선언을 암묵적으로 허용함.
+      //   var x = 10;
+      //   let x = 10;
+
+      // 10000줄의 코드
+
+      //   var x = 'ddd';
+      //   let x = 'ddd'; -> let은 변수의 중복 선언을 막아줍니다.
+
+      //   console.log(`x: ${x}`);
+
+      // 2. 블록 레벨 스코프를 지원하지 않음.
+      let i = '메롱';
+
+      for (let i = 0; i < 10; i++) {
+        console.log(`for - i: ${i}`);
+      }
+
+      console.log(`global - i: ${i}`);
+
+      if (true) {
+        let name = '홍길동';
+      }
+
+      console.log(name);
+      //   console.log(window.name);
+
+      /*
+      3. 변수 호이스팅
+      var 키워드로 변수를 선언하면 호이스팅에 의해
+      변수 선언문이 자동으로 맨 위로 끌어올려진 것처럼 동작합니다.
+      흐름 해석에 방해되어 가독성과 유지보수성을 현격하게 떨어트립니다.
+      */
+
+      //   z = 100;
+      //   console.log(`z: ${z}`);
+
+      //   var z;
+    </script>
+  </body>
+</html>

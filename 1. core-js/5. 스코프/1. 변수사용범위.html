@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width= , initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var x = 99; // global scope: 전역 변수
+      var y = true;
+
+      function foo() {
+        var x = 10; // local scope: 지역 변수
+        var y = '메롱';
+        console.log(`foo x: ${x}`);
+        console.log(`foo y: ${y}`);
+      }
+
+      foo();
+      console.log(`x: ${x}`);
+    </script>
+  </body>
+</html>
