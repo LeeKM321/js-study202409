@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var ex = 10 + '20';
+      console.log(ex); // 1020
+
+      var ex2 = 10 * '3';
+      console.log(ex2); // 30
+
+      var ex3 = 100 + '';
+      console.log(typeof ex3);
+
+      var ex4 = +'550';
+      console.log(typeof ex4); // number
+
+      ex4 = +'false';
+      console.log(ex4); // number -> NaN
+
+      var ex5 = +true; // 1
+      ex5 = +false; // 0
+      ex5 = +null; // 0
+      ex5 = +NaN; // NaN은 숫자로 변환할 수 없음.
+      console.log(ex5);
+
+      console.log('-----------------------------------------------------');
+
+      // Truthy, Falsy 논리 표현식
+      // undefined, null, 0, NaN, ''(빈 문자열)은 모두 false,
+      // 나머지는 모두 true로 인식합니다.
+
+      // 함수가 반환하는 값, 통신 결과에 따른 값들이 정확하게 어떤 값인지 모르더라도
+      // 해당 값이 띠고 있는 논리적 평가에 따라 조건문을 좀 더 수월하게 작성이 가능.
+
+      if ('') console.log('OK1'); // false
+      if ('hello') console.log('OK2');
+      if (undefined) console.log('OK3'); // false
+      if (null) console.log('OK4'); // false
+      if (350) console.log('OK5');
+      if (NaN) console.log('OK6'); // false
+      if (0) console.log('OK7'); // false
+      if ([1, 2, 3]) console.log('OK8');
+
+      /*
+        var nick; -> 로그인한 사람의 닉네임 
+
+        nick && <h1>안녕하세요 ${nick}님!</h1>
+        */
+
+      console.log('-----------------------------------------------------');
+
+      // 명시적 변환
+
+      // 문자열이 아닌 값을 문자열로 변환하는 법
+      var a = 10,
+        b = 20;
+      var result = a + String(b); // 1번째
+      result = a.toString() + b.toString(); // 2번째
+
+      console.log(typeof result);
+
+      // 숫자가 아닌 값을 숫자로 변환하는 법
+      var m = '10',
+        n = '3.14';
+
+      result = Number(m) + Number(n); // 1번째
+      result = parseInt(m) + parseFloat(n); // 2번째
+
+      console.log(typeof result);
+
+      var t = 'Hello',
+        f = '';
+
+      console.log(Boolean(t));
+      console.log(Boolean(f));
+
+      // 논리 반전 연산자를 이용해 문자열 'hello'값을 논리형으로 변환 -> not true -> false
+      // false 값을 다시 한번 반전 -> not false -> true
+      console.log(!!t);
+    </script>
+  </body>
+</html>

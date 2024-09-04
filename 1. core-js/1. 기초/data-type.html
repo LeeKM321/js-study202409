@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var integer = 100;
+      var float = 3.14;
+
+      // 타입 확인용 키워드 typeof
+      console.log(typeof integer);
+      console.log(typeof float);
+
+      // 에러는 나지 않지만 Infinity는 활용하기 힘든 상징적인 값이기 때문에
+      // 웬만하면 안보이게 해 주세요.
+      console.log(30 / 0);
+
+      console.log(10 / 4); // 2.5
+
+      // NaN: Not a Number -> 숫자가 아니다.
+      // 잘못된 연산, 표현할 수 없는 값의 결과.
+      console.log(30 / '메롱');
+
+      console.log('--------------------------------------------------------');
+
+      var greetings = '안녕'; // (o)
+      greetings = '안녕'; // 주로 사용합니다.
+      greetings = `반갑습니다~`; // 템플릿 리터럴 문법 적용시
+
+      // 탈출 문자 (\n, \t...)는 자바와 동일하게 사용 가능합니다.
+
+      var tag = '<ul>\n\t<li>\n\t\t<a href="">Home</a>\n\t</li>\n</ul>';
+      console.log(tag);
+
+      // 템플릿 리터럴: 백틱(``)으로 감싼 문자열
+      // 공백과 들여쓰기, 줄 개행 등을 모두 문자열로 인정해 줍니다.
+      tag = `<ul>
+    <li>
+        <a href="#">Home</a>
+    </li>
+</ul>`;
+      console.log(tag);
+
+      var month = 12;
+      var day = 25;
+      var anni = '크리스마스';
+
+      console.log(month + '월 ' + day + '일은 ' + anni + '입니다.');
+      console.log(`${month}월 ${day}일은 ${anni}입니다.`);
+
+      console.log('--------------------------------------------------------');
+
+      var apple = 0;
+      if (apple) {
+        console.log(`사과가 ${apple}개 있습니다.`);
+      } else {
+        console.log('사과가 하나도 없습니다.');
+      }
+
+      // undefined
+      // 값을 할당하지 않은 변수에 암묵적으로 할당되는 값.
+      var i;
+      console.log(i);
+
+      // null
+      // 값이 의도적으로 없다는 것을 명시할 때 사용하는 값.
+    </script>
+  </body>
+</html>

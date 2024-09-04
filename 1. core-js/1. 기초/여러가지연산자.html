@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var num = 3;
+      console.log(27 / 5); // 몫을 가져옴
+      console.log(27 % 5); // 나머지를 가져옴
+
+      console.log(num ** 4); // ES7 이후 출시된 거듭제곱 연산자
+      console.log(Math.pow(num, 4)); // ES7 이전에 사용하던 거듭제곱 함수
+
+      console.log('--------------------------------------------');
+
+      // 단항 산술 연산자 ++, --
+      var x = 3;
+      x++;
+      x++;
+      --x;
+
+      console.log('x: ' + x);
+
+      // 전위(prefix), 후위(suffix) 연산
+      var a = 10;
+      var result;
+      result = a++; // 후위 연산: 선연산 후증감
+      console.log(`result: ${result}, a: ${a}`);
+
+      result = ++a; // 전위 연산: 선증감 후연산
+      console.log(`result: ${result}, a: ${a}`);
+
+      console.log('-----------------------------------------');
+
+      // 대입(할당) 연산자, 복합 대입 연산자
+      var i = 9;
+      i += 3; // i = i + 3
+      i -= 8; // 4
+      i *= 10; // 40
+      i /= 8; // 5
+      i %= 3; // 2
+      i **= 4; // 16
+      console.log('i: ' + i);
+
+      console.log('----------------------------------------------------');
+
+      // 비교 연산자
+
+      /*
+    == 연산자는 암묵적으로 문자열 내부에 숫자가 있다면
+    자동으로 숫자로 변환한 후에 비교합니다.
+    ===을 사용하면 타입까지 일치하는 지 비교합니다.
+    */
+      var a = 5,
+        b = '5';
+      console.log(a == b); // true
+      console.log(a === b); // false
+
+      // 동등 비교(==)는 결과 예측이 힘들기 때문에 조심하셔야 합니다. (사용 권장 x)
+      console.log('--------------------------------');
+      console.log('0' == ''); // false
+      console.log(0 == ''); // true
+      console.log(0 == '0'); // true
+      console.log(false == 'false'); // false
+      console.log(false == '0'); // true
+
+      //일치 비교(===)에서는 NaN을 주의.
+      //NaN은 자신과 일치하지 않는 유일한 값입니다.
+      console.log(NaN === NaN); // false
+
+      // 문자열 비교 (대/소문자를 철저하게 구분함.)
+      console.log('----------------------------------');
+      console.log('apple' === 'Apple');
+
+      // 문자열끼리의 대소 비교
+      // 유니코드 문자 번호를 기준으로 합니다.
+      // 유니코드: 전 세계의 문자를 번호로 지정한 규격 0 ~ 65535
+      // 같은 문자일 경우 사전 등재 순서로 판단, 알파벳 대문자 < 소문자
+      console.log('peach' < 'zebra');
+      console.log('감자' < '고구마');
+      console.log('peach' < 'Zebra');
+    </script>
+  </body>
+</html>
