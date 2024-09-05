@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li class="f-item ap">사과</li>
+      <li class="f-item bn">바나나</li>
+      <li class="f-item gp">포도</li>
+      <li class="f-item pc">복숭아</li>
+    </ul>
+
+    <script>
+      //   const $item = document.getElementsByClassName('ap');
+      //   console.log($item);
+
+      const $apple = document.querySelector('.ap');
+      $apple.textContent = '충주사과';
+
+      // querySelector는 발견된 첫번째 요소만 가져옴.
+      const $items = document.querySelector('.f-item');
+      console.log($items);
+
+      // querySelectorAll이 가져오는 데이터 묶음은
+      // 배열이 아닌 유사배열객체 이기 때문에, 배열 문법이 안먹습니다.
+      // 유사배열을 실제 배열로 바꿔서 쓰시는 것을 추천합니다.
+      // getElementsByTagName, ClassName 등도 유사배열입니다. 순수 배열로 바꿔서 사용하세요.
+      const $allItem = document.querySelectorAll('.f-item');
+      console.log($allItem);
+
+      //   $allItem.push(); (x)
+
+      // 유사 배열을 순수 배열로 바꾸자
+      const $fruitsArr = [...$allItem];
+
+      $fruitsArr.pop().textContent = '오우렌지';
+    </script>
+  </body>
+</html>
