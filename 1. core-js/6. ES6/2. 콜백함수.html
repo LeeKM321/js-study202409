@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function calculate(func) {
+        console.log('저는 계산기에요!');
+        const result = func(10, 20);
+        return result;
+      }
+
+      function add(n1, n2) {
+        return n1 + n2;
+      }
+
+      const r1 = calculate(add);
+      console.log(r1);
+
+      const r2 = calculate(function (n1, n2) {
+        return n1 - n2;
+      });
+      console.log(r2);
+
+      const r3 = calculate((n1, n2) => n1 * n2);
+      console.log(r3);
+
+      console.log('==================================================');
+
+      // 정수 n을 전달하면 1 ~ n까지의 모든 짝수를 출력하는 함수
+      function showEvenNumber(n) {
+        for (let i = 1; i <= n; i++) {
+          if (i % 2 === 0) console.log(i);
+        }
+      }
+
+      // 정수 n을 전달하면 1 ~ n까지의 모든 홀수를 출력하는 함수
+      function showOddNumber(n) {
+        for (let i = 1; i <= n; i++) {
+          if (i % 2 !== 0) console.log(i);
+        }
+      }
+
+      // 정수 n을 전달하면 1 ~ n까지의 모든 3의 배수를 출력하는 함수
+      function showMultipleOf3(n) {
+        for (let i = 1; i <= n; i++) {
+          if (i % 3 === 0) console.log(i);
+        }
+      }
+
+      // 콜백을 적용한 솔루션
+      function showNumbers(n, code) {
+        for (let i = 1; i <= n; i++) {
+          if (code(i)) console.log(i);
+        }
+      }
+
+      // 짝수 출력 함수 호출문
+      showNumbers(10, function (i) {
+        return i % 2 === 0;
+      });
+
+      // 1 ~ 200까지의 정수 중 5의 배수이면서 10의 배수는 아닌 수를 출력.
+      showNumbers(200, (i) => i % 5 === 0 && i % 10 !== 0);
+    </script>
+  </body>
+</html>
