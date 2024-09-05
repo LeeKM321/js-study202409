@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let 키워드로 변수를 선언하면 값의 변경이 자유롭다.
+      let x;
+      x = 'zz';
+      x = 'ff';
+      console.log(x);
+
+      // const: 상수 선언. 값의 변경이 불가능합니다.
+      const y = '메롱';
+      //   y = 'ggg';
+      console.log(y);
+
+      // 상수는 객체의 불변성을 유지할 수 있다.
+      // 프로퍼티 변경은 얼마든지 가능하다.
+      const kim = {
+        name: '김철수',
+        age: 30,
+      };
+      kim.age = 31;
+      kim.name = '김개똥';
+
+      //   kim = {
+      //     name: '김춘식',
+      //     age: 10,
+      //   }; (x)
+
+      for (let i = 0; i < 5; i++) {}
+    </script>
+  </body>
+</html>
