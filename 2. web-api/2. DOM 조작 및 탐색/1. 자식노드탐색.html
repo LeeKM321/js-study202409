@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li class="f-item ap">사과</li>
+      <li class="f-item bn">바나나</li>
+      <li class="f-item gp">포도</li>
+      <li class="f-item pc">복숭아</li>
+    </ul>
+
+    <script>
+      const $ul = document.getElementById('fruits');
+      //   const $children = $ul.childNodes; 공백을 텍스트로 인식해서 모두 가져옴.
+      const $children = [...$ul.children];
+      console.log($children);
+
+      const $first = $ul.firstElementChild;
+      console.log($first);
+
+      const $last = $ul.lastElementChild;
+      $first.style.fontSize = '2em';
+      $last.style.color = 'violet';
+    </script>
+  </body>
+</html>
