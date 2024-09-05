@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const userList = [
+        {
+          account: 'abc1234',
+          userName: '대길이',
+          job: '추노',
+          address: '서울',
+          hobbys: ['수영', '축구', '테니스'],
+          salary: 5400000,
+          age: 35,
+        },
+        {
+          account: 'banana',
+          userName: '빠나나',
+          job: '과일',
+          address: '서울',
+          hobbys: ['푸드파이팅', '테니스'],
+          salary: 9700000,
+          age: 18,
+        },
+        {
+          account: 'park1234',
+          userName: '주차왕',
+          job: '발렛파킹',
+          address: '경기',
+          hobbys: ['족구', '축구', '테니스', '영화감상'],
+          salary: 3900000,
+          age: 56,
+        },
+        {
+          account: 'fire',
+          userName: '불꽃남자카리스마',
+          job: '게이머',
+          address: '서울',
+          hobbys: ['독서', '테니스'],
+          salary: 7900000,
+          age: 42,
+        },
+      ];
+
+      const fruits = ['banana', 'apple', 'mango'];
+      fruits.sort();
+      console.log(fruits);
+
+      const numbers = [10, 2, 5, 1];
+      //   numbers.sort();
+      //   console.log(numbers); [1, 10, 2, 5]: 숫자를 문자열로 변환해서 정렬.
+
+      console.log(numbers);
+
+      numbers.sort((a, b) => {
+        console.log(a);
+        console.log(b);
+        console.log('===========================');
+
+        // return a - b; // 오름차
+        return b - a; // 내림차
+      });
+
+      /*
+      	•	음수: 첫 번째 요소가 두 번째 요소보다 작으면(앞에 위치하면) 음수를 반환.
+	    •	0: 두 요소가 같으면 0을 반환.
+	    •	양수: 첫 번째 요소가 두 번째 요소보다 크면(뒤에 위치하면) 양수를 반환.
+      */
+
+      /*
+        [10, 2, 5, 1]
+        2  a
+        10 b    minus [2, 10, 5, 1]
+        ===========================
+        5
+        2       plus
+        ===========================
+        5
+        10      minus  [2, 5, 10, 1]
+        ===========================
+        5
+        2       plus
+        ===========================
+        1
+        5       minus  [2, 1, 5, 10]
+        ===========================
+        1
+        2       minus  [1, 2, 5, 10]
+        ===========================
+      */
+      console.log(numbers);
+
+      userList.sort((a, b) => a.age - b.age); // 나이 오름차
+      userList.sort((a, b) => b.salary - a.salary); // 급여 내림차
+      userList.sort((a, b) => {
+        if (b.userName > a.userName) {
+          return 1;
+        } else if (a.userName > b.userName) {
+          return -1;
+        } else return 0;
+      }); // 이름 내림차
+
+      console.log(userList);
+
+      console.log('===============================================');
+
+      // find(): 객체로 이루어진 배열에서 특정 조건에 맞는 객체 찾기
+      const foundUser = userList.find((user) => user.job === '과일');
+      console.log(foundUser);
+
+      // findIndex(): 없으면 -1 리턴
+      const idx = userList.findIndex((user) => user.age === 56);
+      console.log(idx);
+    </script>
+  </body>
+</html>

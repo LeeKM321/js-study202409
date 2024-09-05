@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const userList = [
+        {
+          account: 'abc1234',
+          userName: '대길이',
+          job: '추노',
+          address: '서울',
+          hobbys: ['수영', '축구', '테니스'],
+          salary: 5400000,
+          age: 35,
+        },
+        {
+          account: 'banana',
+          userName: '빠나나',
+          job: '과일',
+          address: '서울',
+          hobbys: ['푸드파이팅', '테니스'],
+          salary: 9700000,
+          age: 18,
+        },
+        {
+          account: 'park1234',
+          userName: '주차왕',
+          job: '발렛파킹',
+          address: '경기',
+          hobbys: ['족구', '축구', '테니스', '영화감상'],
+          salary: 3900000,
+          age: 56,
+        },
+        {
+          account: 'fire',
+          userName: '불꽃남자카리스마',
+          job: '게이머',
+          address: '서울',
+          hobbys: ['독서', '테니스'],
+          salary: 7900000,
+          age: 42,
+        },
+      ];
+      // 배열 고차함수
+      // -> 배열에서 사용하는 콜백 함수를 받는 함수.
+      // 콜백 함수가 동작을 결정하게 됨.
+
+      // forEach(): 배열의 요소를 순회
+      userList.forEach((user) => {
+        console.log(
+          `제 이름은 ${user.userName}이고, ${user.address}에 살아요~`
+        );
+      });
+
+      let total = 0;
+      [10, 20, 30].forEach((n) => (total += n));
+      console.log(total);
+
+      console.log('===============================================');
+
+      // filter: 조건에 맞는 배열 내의 요소를 필터링
+
+      // 회원 목록에서 이름이 3글자인 회원들 필터링
+      const filteredUserName = userList.filter(
+        (user) => user.userName.length === 3
+      );
+      console.log(filteredUserName);
+
+      // map: 배열에서 특정 데이터들을 추출해서 새로운 배열에 맵핑.
+
+      // 회원 목록에서 회원의 나이만 뽑아봐. 그래서 xx세로 맵핑해줘.
+      const mappedUsers = userList.map((user) => `${user.age}세`);
+      console.log(mappedUsers);
+
+      // 회원 목록에서 회원 이름과 회원의 나이와 회원의 주소를 출력할건데,
+      // 이름의 키값을 nickName, 나이는 old, 주소는 addr로 하고싶어.
+      const mappedUserList = userList.map((user) => ({
+        nickName: user.userName,
+        old: user.age,
+        addr: user.address,
+      }));
+      console.log(mappedUserList);
+
+      console.log('===============================================');
+
+      // 배열 고차함수의 체이닝 호출
+
+      // 회원목록에서 서울에 사는 회원들의 두번째 취미만 추출해서
+      // xxx 님의 2번째 취미는 xxx 입니다. 를 반복해서 출력.
+      userList
+        .filter((user) => user.address === '서울')
+        .map((user) => ({ name: user.userName, second: user.hobbys[1] }))
+        .forEach((result) =>
+          console.log(
+            `${result.name}님의 2번째 취미는 ${result.second} 입니다.`
+          )
+        );
+    </script>
+  </body>
+</html>
