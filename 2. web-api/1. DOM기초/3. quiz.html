@@ -23,24 +23,46 @@
     <script>
       //1. id="list1"인 요소에 <li> 요소중
       //    홀수번째 요소만 선택후 배경색상 yellow 적용
+      // const $listItem = document.querySelectorAll('#list1 li:nth-child(odd)');
+      const $listItem = [...document.querySelectorAll('#list1 li')];
+      $listItem
+        .filter(($li, i) => i % 2 === 0) // filter에 전달하는 콜백함수의 두번째 매개값은 인덱스
+        .forEach(($li) => ($li.style.background = 'yellow'));
 
       //2. id="list1"인 요소에 <li> 요소중
       //   짝수번째 요소만 선택후 배경색상 gray 적용
+      // const $listItem = document.querySelectorAll('#list1 li:nth-child(even)');
+      $listItem
+        .filter(($li, i) => i % 2 === 1)
+        .forEach(($li) => ($li.style.background = 'gray'));
 
       //3. id="list1"인 요소에 <li> 요소중
       //  첫번째 <li>요소만 선택후 폰트색상 red 적용
+      // document.querySelector('#list1 li:first-child');
+      const [$first, $second, ...$others] = $listItem;
+      $first.style.color = 'red';
 
       //4. id="list1"인 요소에 <li> 요소중
       //   마지막번째 <li>요소만 선택후 폰트색상 green 적용
+      // document.querySelector('#list1 li:last-child')
+      $listItem[$listItem.length - 1].style.color = 'green';
 
       //5. id="list1"인 요소에 <li> 요소중
       // 두번째 <li>요소만 선택후 font-style: italic 적용
+      $listItem[1].style.fontStyle = 'italic';
 
       //6. id="list1"인 요소에 <li> 요소중  3번째 이전 요소만 선택후
       //   border: 2px dotted aqua 적용 (1, 2번째만 선택)
+      // document.querySelectorAll('#list1 li:nth-child(-n+2)')
+      [$listItem[0], $listItem[1]].forEach(
+        ($li) => ($li.style.border = '2px dotted aqua')
+      );
 
       //7. id="list1"인 요소에 <li> 요소중  3번째 이후요소만 선택후
       //   border 2px dashed violet 적용 (3번째부터 끝까지 선택)
+      // document.querySelectorAll('#list1 li:nth-child(n+4)')
+      const [, , , ...$rest] = $listItem;
+      $rest.forEach(($li) => ($li.style.border = '2px dashed violet'));
     </script>
   </body>
 </html>
