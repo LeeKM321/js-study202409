@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="greet">Hello <span class="highlight">World</span></div>
+
+    <ul id="food-list">
+      <li class="food">짜장면</li>
+      <li class="food">파스타</li>
+      <li class="food">볶음밥</li>
+    </ul>
+
+    <script>
+      // textContent는 마크업을 제외한 텍스트 전체를 지목.
+      // 태그를 작성해도 모두 텍스트로 인식합니다.
+      const $greet = document.getElementById('greet');
+      console.log($greet.textContent.trim());
+
+      const $foodList = document.getElementById('food-list');
+
+      // 자식 태그 추가
+      // 문자열 형태로 된 마크업 형식을 실제 노드로 추가해 주는 innerHTML
+      $foodList.innerHTML += '<li class="food">짬뽕</li>';
+
+      // 자식 태그 전체 삭제
+      $foodList.innerHTML = '';
+
+      const sashimiList = [
+        {
+          foodName: '연어회',
+          price: 20000,
+        },
+        {
+          foodName: '고등어회',
+          price: 30000,
+        },
+        {
+          foodName: '광어회',
+          price: 10000,
+        },
+      ];
+
+      sashimiList.forEach((s) => {
+        $foodList.innerHTML += `<li class="food" data-price="${s.price}">${s.foodName}</li>`;
+      });
+    </script>
+  </body>
+</html>
