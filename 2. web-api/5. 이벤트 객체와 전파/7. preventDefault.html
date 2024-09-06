@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a id="link" href="https://github.com">깃허브로 이동!</a>
+
+    <script>
+      const $link = document.getElementById('link');
+
+      $link.addEventListener('click', (e) => {
+        // confirm은 확인/취소 버튼으로 이루어진 알림창
+        // 확인을 누르면 true가, 취소를 누르면 false가 리턴됩니다.
+        if (!confirm('깃허브로 이동할까요?')) {
+          e.preventDefault(); // 태그의 고유기능을 죽이기.
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <button id="btn">클릭하세요</button>
+    </div>
+
+    <script>
+      const $container = document.getElementById('container');
+      const $btn = document.getElementById('btn');
+
+      $container.addEventListener(
+        'click',
+        (e) => {
+          alert('컨테이너에서 이벤트가 감지됨!');
+        },
+        true
+      ); // addEventListener의 세번째 매개값으로 true를 주면 캡처링을 활성화.
+
+      $btn.addEventListener('click', (e) => {
+        alert('버튼에서 이벤트가 발생함!');
+      });
+    </script>
+  </body>
+</html>

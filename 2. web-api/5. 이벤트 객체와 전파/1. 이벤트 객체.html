@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>아무곳이나 클릭하세요!</p>
+
+    <input type="checkbox" />
+
+    <span class="msg"></span>
+
+    <hr />
+
+    <input type="text" id="input-text" />
+    <p id="msg"></p>
+
+    <script>
+      // 문서 전체에 이벤트 핸들러 등록
+      /*
+      document.addEventListener('click', (e) => {
+        console.log('클릭 이벤트 발생!');
+        console.log(e);
+        document.querySelector(
+          '.msg'
+        ).textContent = `x좌표: ${e.offsetX}, y좌표: ${e.offsetY}`;
+      });
+      */
+
+      const $checkbox = document.querySelector('input[type=checkbox]');
+
+      $checkbox.addEventListener('change', (e) => {
+        // 실제 이벤트가 발생한 요소 -> 이벤트가 발생된 요소가 누구인지를 파악할 때 많이 사용!
+        // console.log(e.target);
+
+        // 체크박스 or radio 버튼의 체크 유무를 확인하는 프로퍼티
+        if (e.target.checked) {
+          document.querySelector('.msg').textContent = '체크됨!';
+        } else {
+          document.querySelector('.msg').textContent = '체크 안됨!';
+        }
+      });
+
+      //////////////////////////////////////////////////////////////
+
+      const $input = document.getElementById('input-text');
+      const $msg = document.getElementById('msg');
+
+      $input.addEventListener('keyup', (e) => {
+        console.log('keyup 이벤트 발생');
+        // console.log(`입력한 값: ${e.target.value}`);
+        // console.log(e.keyCode);
+        if (e.keyCode === 13) {
+          // keyup 한 자판이 enter니?
+          $msg.textContent = e.target.value;
+          e.target.value = '';
+        } else if (e.keyCode === 27) {
+          $msg.textContent = '';
+        }
+      });
+    </script>
+  </body>
+</html>
