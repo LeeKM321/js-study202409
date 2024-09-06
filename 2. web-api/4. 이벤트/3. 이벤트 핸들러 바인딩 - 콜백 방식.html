@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">버튼입니다.</button>
+
+    <script>
+      const $btn = document.getElementById('btn');
+
+      // 이벤트 핸들러
+      const helloHandler = () => alert('안뇽~!');
+
+      // addEventListener('이벤트 타입', 핸들러 -> 콜백)
+      $btn.addEventListener('click', helloHandler);
+
+      $btn.addEventListener('click', function () {
+        alert('안뇽 못한다~!');
+      });
+    </script>
+  </body>
+</html>

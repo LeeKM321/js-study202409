@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background: orange;
+        margin: 20px;
+      }
+      .green {
+        background: yellowgreen;
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .red {
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="b1" class="box"></div>
+    <div id="b2" class="box green"></div>
+    <div id="b3" class="box red"></div>
+
+    <script>
+      // 이벤트 핸들러
+      function sayHelloHandler() {
+        alert('hello!');
+      }
+
+      const $b1 = document.getElementById('b1');
+      $b1.onclick = sayHelloHandler;
+
+      const $b2 = document.getElementById('b2');
+      $b2.ondblclick = () => {
+        $b2.style.width = '150px';
+      };
+
+      // 프로퍼티 방식의 단점: 같은 타입의 이벤트에는 여러 핸들러를
+      // 바인딩 할 수 없음.
+      const $b3 = document.getElementById('b3');
+      $b3.onmouseleave = () => {
+        $b3.style.background = 'yellow';
+      };
+
+      $b3.onmouseleave = sayHelloHandler;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background: orange;
+        margin: 20px;
+      }
+      .green {
+        background: yellowgreen;
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .red {
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" onclick="() => alert('메롱')"></div>
+    <div class="box green" onclick="boxClickHander()"></div>
+    <div
+      class="box red"
+      onmouseover="growHandler()"
+      onclick="boxClickHander()"
+    ></div>
+
+    <script>
+      // 이벤트 핸들러: 브라우저에서 일어나는
+      // 행위에 대해 해야 할 일을 함수로 만드는 것.
+      function boxClickHander() {
+        alert('박스가 클릭됨!');
+      }
+
+      const growHandler = function () {
+        document.querySelector('.red').style.width = '200px';
+      };
+    </script>
+  </body>
+</html>
