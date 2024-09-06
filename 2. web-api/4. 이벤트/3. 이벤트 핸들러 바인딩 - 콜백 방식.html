@@ -20,6 +20,14 @@
       $btn.addEventListener('click', function () {
         alert('안뇽 못한다~!');
       });
+
+      // 기존 핸들러를 지우고 싶을 때는 수동으로 지워야 함.
+      // 수동으로 지울 때는 반드시 핸들러가 기명함수여야 함.
+      $btn.removeEventListener('click', helloHandler);
+
+      $btn.addEventListener('click', () => {
+        $btn.style.background = 'aqua';
+      });
     </script>
   </body>
 </html>
