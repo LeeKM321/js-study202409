@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li class="f-item ap">사과</li>
+      <li class="f-item bn">바나나</li>
+      <li class="f-item gp">포도</li>
+      <li class="f-item pc">복숭아</li>
+    </ul>
+
+    <div id="wrapper">
+      <section class="contents">
+        <ul class="list">
+          <li class="item"><a href="#" class="link">10</a></li>
+          <li class="item"><a href="#" class="link active">20</a></li>
+          <li class="item"><a href="#" class="link">30</a></li>
+        </ul>
+        <ul class="list">
+          <li class="item"><a href="#" class="link">40</a></li>
+          <li class="item"><a href="#" class="link">50</a></li>
+          <li class="item"><a href="#" class="link">60</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <script>
+      const $ul = document.getElementById('fruits');
+
+      const [$apple, $banana, $grape] = [...$ul.children];
+      $grape.style.color = 'violet';
+
+      $grape.nextElementSibling.style.color = 'pink';
+      $grape.previousElementSibling.style.color = 'yellow';
+
+      const $active = document.querySelector('.active');
+      /*
+      $active
+        .parentElement //li
+        .parentElement //ul
+        .nextElementSibling //다음 형제 ul
+        .lastElementChild // 세번째 li
+        .firstElementChild // a = 60
+        .style.color = 'red'
+       */
+
+      // 기준태그로부터 위로 올라가면서 탐색하는 함수
+      // closest('css selector')
+      const $contentSect = $active.closest('section.contents');
+      console.log($contentSect);
+    </script>
+  </body>
+</html>
