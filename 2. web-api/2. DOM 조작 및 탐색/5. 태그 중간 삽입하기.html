@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li>사과</li>
+      <li>바나나</li>
+      <li>포도</li>
+    </ul>
+
+    <script>
+      const $ul = document.getElementById('fruits');
+      const [$apple, $banana, $grape] = [...$ul.children];
+
+      const $newLi = document.createElement('li');
+      $newLi.textContent = '망고';
+
+      // 중간삽입: insertBefore
+      // 두번째 매개값으로 전달된 노드는 반드시
+      // insertBefore를 호출한 노드의 자식이어야 합니다.
+      //   $ul.insertBefore($newLi, $ul.lastElementChild);
+      $ul.insertBefore($newLi, document.querySelector('li:nth-child(2)'));
+
+      // 노드 이동시키기
+      // 이미 활성화 된 요소를 appendChild하면 맨 마지막으로 이동.
+      $ul.appendChild($apple);
+
+      // insertBefore도 마찬가지로 기존 요소를 이동할 수 있다.
+      $ul.insertBefore($banana, $ul.lastElementChild);
+    </script>
+  </body>
+</html>
