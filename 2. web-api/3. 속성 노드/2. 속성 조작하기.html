@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="box-item" title="안녕"></div>
+
+    <script>
+      const $box = document.querySelector('.box');
+
+      // 속성값 참조
+      // const title = $box.attributes.title.value;
+      const title = $box.getAttribute('title');
+      console.log(`title: ${title}`);
+
+      // 속성값 변경
+      $box.setAttribute('id', 'superbox');
+
+      // 속성값 추가
+      $box.setAttribute('style', 'border-radius: 50%');
+
+      // 속성값 제거
+      $box.removeAttribute('class');
+
+      // 속성값 유무 확인
+      alert($box.hasAttribute('src'));
+    </script>
+  </body>
+</html>

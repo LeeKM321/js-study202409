@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="users">
+      <li id="1" data-user-id="kim1234" data-role="common">Kim</li>
+      <li id="2" data-user-id="park4321" data-role="admin">Park</li>
+    </ul>
+
+    <script>
+      const $users = document.getElementById('users');
+
+      // 배열 디스트럭쳐링
+      const [$user1, $user2] = [...$users.children];
+
+      /*
+      data- 로 시작하는 어트리뷰트와 dataset 프로퍼티를 사용하면
+      HTML 요소와 자바스크립트 간의 데이터를 쉽게 교환할 수 있습니다.
+      data- 뒤에는 원하시는 특정 키워드를 작성하시고,
+      dataset 프로퍼티를 이용하여 data + 키워드 로 값을 가지고 오시면
+      됩니다.
+      */
+
+      console.log($user1.getAttribute('data-role'));
+      console.log($user1.dataset);
+      console.log($user1.dataset.role);
+
+      // data-을 제외한 나머지 식별자가 -이 있는 경우 카멜케이스 적용.
+      console.log($user1.dataset.userId);
+
+      $user2.dataset.role = 'anonymous';
+      $user2.dataset.telNumber = '010-1234-5678';
+    </script>
+  </body>
+</html>
