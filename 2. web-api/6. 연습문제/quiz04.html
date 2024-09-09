@@ -27,17 +27,69 @@
 
     <script>
       /*
-    1. 입력받은 이름값을 h3에 띄워주세요.
-    이름이 입력되었다면 이름 입력창을 숨겨주세요.
+      1. 입력받은 이름값을 h3에 띄워주세요.
+      이름이 입력되었다면 이름 입력창을 숨겨주세요.
 
-    2. 할일을 입력받아서 li요소로 추가해 주세요.
-    그 후 입력창은 비워주세요.
-    
-    3. 할일이 추가되면 X버튼이 같이 생성됩니다. 
-    (button 태그에 X를 텍스트로 작성. 디자인 따로 부여하지 않겠습니다.)
-    X버튼을 클릭했다면 해당 할 일을 지워주세요.
-    (X버튼 누를 시 이벤트 발생 -> X버튼을 품고 있는 부모 노드를 삭제)
-    */
+      2. 할일을 입력받아서 li요소로 추가해 주세요.
+      그 후 입력창은 비워주세요.
+
+      3. 할일이 추가되면 X버튼이 같이 생성됩니다.
+      (button 태그에 X를 텍스트로 작성. 디자인 따로 부여하지 않겠습니다.)
+      X버튼을 클릭했다면 해당 할 일을 지워주세요.
+      (X버튼 누를 시 이벤트 발생 -> X버튼을 품고 있는 부모 노드를 삭제)
+      */
+
+      const $btn1 = document.querySelector('.btn1');
+      const $nameInput = document.querySelector('.name-input');
+      const $nameTitle = document.querySelector('.name-title');
+
+      $btn1.addEventListener('click', () => {
+        if ($nameInput.value.trim() === '') {
+          alert('이름을 입력해 주세요!');
+          return;
+        }
+        $nameTitle.textContent = $nameInput.value + '님 안녕하세요!';
+        $nameInput.style.display = 'none';
+        $btn1.style.display = 'none';
+      });
+
+      const $todoInput = document.querySelector('.todo-input');
+      const $btn2 = document.querySelector('.btn2');
+      const $ul = document.querySelector('.todo-list');
+
+      $btn2.addEventListener('click', () => {
+        if ($todoInput.value.trim() === '') {
+          alert('할 일을 입력해 주세요!');
+          return;
+        }
+
+        // li 생성하고 사용자 입력값을 텍스트로 추가
+        const $li = document.createElement('li');
+        $li.textContent = $todoInput.value;
+
+        // X 버튼 생성
+        const $delBtn = document.createElement('button');
+        $delBtn.textContent = 'X';
+
+        // li에 X 버튼을 넣자
+        $li.appendChild($delBtn);
+
+        // ul에 li를 추가하자
+        $ul.appendChild($li);
+
+        // 다음 할 일 추가를 위해 입력창 비우기
+        $todoInput.value = '';
+      });
+
+      // li가 생성된 이후에 ul 안에서 삭제 버튼 클릭 시 이벤트 발생. (이벤트 위임)
+      $ul.addEventListener('click', (e) => {
+        if (!e.target.matches('.todo-list > li > button')) {
+          return;
+        }
+
+        // 지금 이벤트가 발생된(X 버튼을 누른) 부모 요소 li를 제거
+        $ul.removeChild(e.target.parentNode);
+      });
     </script>
   </body>
 </html>

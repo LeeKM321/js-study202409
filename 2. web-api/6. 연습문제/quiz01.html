@@ -16,5 +16,30 @@
     <input type="text" id="result" value="0" readonly />
     <button id="plus">+</button>
     <button id="minus">-</button>
+
+    <script>
+      const $count = document.getElementById('result');
+      const $plus = document.getElementById('plus');
+      const $minus = document.getElementById('minus');
+
+      $plus.onclick = () => {
+        $count.value++;
+        // let value = $count.getAttribute('value');
+        // value++;
+        // $count.setAttribute('value', value);
+      };
+
+      $minus.onclick = () => {
+        // input의 value는 string입니다.
+        console.log(typeof $count.value);
+
+        if (+$count.value === 0) {
+          alert('0 미만으로는 내릴 수 없습니다.');
+          return;
+        }
+
+        $count.value--;
+      };
+    </script>
   </body>
 </html>

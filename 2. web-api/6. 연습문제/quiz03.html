@@ -4,12 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .menu ul {
+        list-style: none;
+        border: 1px solid orange;
+        width: 100px;
+        margin: 0;
+        margin-top: 20px;
+        margin-left: 20px;
+        padding: 10px;
+      }
+
+      .menu .title {
+        cursor: pointer;
+      }
+
+      .menu .title:hover {
+        border-bottom: 1px solid green;
+      }
+
+      .open {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <!-- #lunches.menu>span.title+ul>li*4 -->
     <div id="lunches" class="menu">
       <span class="title">추천 메뉴(Click Me!)</span>
-      <ul>
+      <ul class="open">
         <li>돈까스</li>
         <li>군만두</li>
         <li>볶음밥</li>
@@ -24,6 +47,13 @@
         추천 점심 메뉴를 다시 클릭하면 ul이 사라지게도 해 주세요.
         각 요소의 디자인은 자유롭게 지정하세요.
         */
+
+      const $title = document.querySelector('.title');
+      const $menu = document.querySelector('.menu ul');
+
+      $title.addEventListener('click', () => {
+        $menu.classList.toggle('open');
+      });
     </script>
   </body>
 </html>
