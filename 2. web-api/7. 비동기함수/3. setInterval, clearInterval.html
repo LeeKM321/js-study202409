@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="clock"></p>
+    <button id="start">시작</button>
+    <button id="stop">정지</button>
+
+    <script>
+      const $clock = document.getElementById('clock');
+      let intervalTimer = null;
+
+      document.getElementById('start').addEventListener('click', () => {
+        if (intervalTimer) return;
+        intervalTimer = setInterval(() => {
+          const now = new Date();
+          // 현재 시간 가져오기
+          $clock.textContent = now.toLocaleTimeString();
+        }, 1000);
+      });
+
+      document.getElementById('stop').addEventListener('click', () => {
+        clearInterval(intervalTimer);
+        intervalTimer = null;
+      });
+    </script>
+  </body>
+</html>

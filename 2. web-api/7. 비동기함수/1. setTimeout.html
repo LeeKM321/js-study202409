@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="timeout">3초 후 메세지 보기</button>
+    <p class="msg"></p>
+
+    <script>
+      const $btn = document.getElementById('timeout');
+      $btn.addEventListener('click', (e) => {
+        setTimeout(() => {
+          document.querySelector('.msg').textContent =
+            '3초가 지난 후 메세지 입니다!';
+        }, 3000);
+        console.log('setTimeout 이후에 작성한 로그입니다.');
+      });
+    </script>
+  </body>
+</html>

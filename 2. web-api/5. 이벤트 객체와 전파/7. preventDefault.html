@@ -8,6 +8,11 @@
   <body>
     <a id="link" href="https://github.com">깃허브로 이동!</a>
 
+    <form name="myForm" action="https://www.google.com">
+      <input type="text" placeholder="이메일을 쓰세요" />
+      <button type="submit">확인</button>
+    </form>
+
     <script>
       const $link = document.getElementById('link');
 
@@ -17,6 +22,20 @@
         if (!confirm('깃허브로 이동할까요?')) {
           e.preventDefault(); // 태그의 고유기능을 죽이기.
         }
+      });
+
+      // form 객체는 document 객체의 하위 객체 중 하나로
+      // 유일하게 name 속성으로만 form 요소의 접근이 가능합니다.
+      const $myForm = document.myForm;
+
+      // 만약 form 내부의 입력 양식 유효성을 검증해야 한다면
+      $myForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // 일단 submit을 막자
+        if ($myForm.firstElementChild.value === '') {
+          return; // 유효성 검증
+        }
+
+        $myForm.submit(); // 문제 없으면 직접 submit
       });
     </script>
   </body>
