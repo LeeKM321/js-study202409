@@ -1,3 +1,22 @@
+// 일정 데이터가 들어 있는 배열을 선언
+const todos = [
+  {
+    id: 1,
+    text: '할 일 1',
+    done: false, // checkbox를 클릭해서 할 일을 마쳤는지의 여부
+  },
+  {
+    id: 2,
+    text: '할 일 2',
+    done: false, // checkbox를 클릭해서 할 일을 마쳤는지의 여부
+  },
+  {
+    id: 3,
+    text: '할 일 3',
+    done: false, // checkbox를 클릭해서 할 일을 마쳤는지의 여부
+  },
+];
+
 // 화면에 표현할 li.todo-list-item 노드를 생성하는 함수 정의
 const makeTodoItem = (inputText) => {
   const $li = document.createElement('li');
@@ -29,13 +48,34 @@ const makeTodoItem = (inputText) => {
   $remIcon.classList.add('lnr', 'lnr-cross-circle');
   $divRem.appendChild($remIcon);
 
+  // 배열 안에 Todo 내용을 객체로 포장해서 추가
+  const newTodo = {
+    id: makeNewId(),
+    text: inputText,
+    done: false,
+  };
+
+  todos.push(newTodo);
+
   // li 태그 작업
   $li.classList.add('todo-list-item');
+  $li.dataset.id = newTodo.id;
 
   [$label, $divMod, $divRem].forEach(($ele) => $li.appendChild($ele));
 
   // ul 태그를 지목해서 $li를 자식으로 추가
   document.querySelector('.todo-list').appendChild($li);
+
+  console.log(todos);
+};
+
+const makeNewId = () => {
+  return todos.length === 0 ? 1 : todos[todos.length - 1].id + 1;
+  // if (todos.length > 0) {
+  //     return todos[todos.length-1].id + 1;
+  // } else {
+  //     return 1;
+  // }
 };
 
 // 추가 버튼 클릭 이벤트
@@ -78,6 +118,12 @@ $todoList.addEventListener('click', (e) => {
 // 할 일 완료 처리 수행할 함수
 const changeCheckState = ($label) => {
   $label.lastElementChild.classList.toggle('checked');
+
+  // 이벤트가 발생한 li와 매칭되는 객체의 done 값도 변경해 주어야 한다.
+  const dataId = +$label.parentNode.dataset.id;
+  todos[dataId - 1].done = !todos[dataId - 1].done;
+
+  console.log(todos);
 };
 
 // 할 일 삭제 이벤트
@@ -98,8 +144,15 @@ const removeTodoData = ($delTarget) => {
   setTimeout(() => {
     $todoList.removeChild($delTarget);
   }, 1500);
-};
 
+  // 배열 내의 객체 삭제하기
+  const targetIdx = todos.findIndex(
+    (todo) => todo.id === +$delTarget.dataset.id
+  );
+  todos.splice(targetIdx, 1);
+
+  console.log(todos);
+};
 // 할 일 수정 이벤트 (수정 모드 진입, 수정 완료)
 $todoList.addEventListener('click', (e) => {
   if (e.target.matches('.todo-list .modify span.lnr-undo')) {
@@ -125,4 +178,20 @@ const enterModifyMode = ($modSpan) => {
   $modInput.classList.add('modify-input');
 
   $label.replaceChild($modInput, $textSpan);
+};
+
+// 수정 완료 처리
+const modifyTodoData = ($modCompleteSpan) => {
+  // 버튼을 원래대로 돌립시다.
+  $modCompleteSpan.classList.replace('lnr-checkmark-circle', 'lnr-undo');
+
+  // input을 span.text로 변경
+  const $label = $modCompleteSpan.parentNode.previousElementSibling;
+  const $modInput = $label.lastElementChild;
+
+  const $textSpan = document.createElement('span');
+  $textSpan.textContent = $modInput.value;
+  $textSpan.classList.add('text');
+
+  $label.replaceChild($textSpan, $modInput);
 };
