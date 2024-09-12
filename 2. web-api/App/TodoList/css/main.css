@@ -1,0 +1,159 @@
+/* reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+button {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.wrapper {
+  background: #e9ecef;
+  padding-top: 64px;
+  height: 100vh;
+}
+
+section.todo-template {
+  background: tomato;
+  margin: 0 auto;
+  width: 512px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+section.todo-template .app-title {
+  background: #22b8cf;
+  color: #fff;
+  height: 64px;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.todo-template .content {
+  background: #fff;
+}
+
+section.todo-template .content .todo-insert {
+  background: #495057;
+  display: flex;
+}
+
+section.todo-template .content .todo-insert input {
+  /* background: red; */
+  flex: 1;
+  padding: 8px;
+  font-size: 1.1em;
+  line-height: 1.5;
+  color: #fff;
+}
+
+section.todo-template .content .todo-insert input::placeholder {
+  color: #dee2e6;
+}
+
+section.todo-template .content .todo-insert button {
+  background: #868e96;
+  color: #fff;
+  padding: 0 16px;
+  font-size: 1.3em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.todo-template .content .todo-insert button:hover {
+  background: #adb5bd;
+}
+
+section.todo-template .content .todo-list {
+  min-height: 320px;
+  max-height: 520px;
+  overflow: auto;
+}
+
+section.todo-template .content .todo-list .todo-list-item {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+section.todo-template .content .todo-list .todo-list-item:nth-child(even) {
+  background: #f8f9fa;
+}
+
+section.todo-template .content .todo-list .todo-list-item .checkbox {
+  flex: 1;
+}
+
+section.todo-template .content .todo-list .todo-list-item .checkbox input {
+  transform: scale(1.5);
+}
+
+section.todo-template .content .todo-list .todo-list-item .checkbox .text {
+  margin-left: 10px;
+}
+
+section.todo-template
+  .content
+  .todo-list
+  .todo-list-item
+  .checkbox
+  .modify-input {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-left: 64px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 12px;
+  width: 200px;
+}
+
+section.todo-template
+  .content
+  .todo-list
+  .todo-list-item
+  .checkbox
+  .text.checked {
+  text-decoration: line-through;
+  color: #adb5bd;
+}
+
+section.todo-template .content .todo-list .todo-list-item div {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+section.todo-template .content .todo-list .todo-list-item .modify {
+  color: green;
+  margin-right: 10px;
+}
+
+section.todo-template .content .todo-list .todo-list-item .remove {
+  color: red;
+}
+
+/* 삭제 모션 */
+.delMoving {
+  animation: delMove 1.5s ease-in-out;
+}
+@keyframes delMove {
+  0% {
+    background: orange;
+    transform: translateX(20px);
+  }
+  50% {
+    background: orangered;
+    transform: translateX(-500px);
+  }
+  100% {
+    background: red;
+    transform: translateX(-2000px);
+  }
+}
