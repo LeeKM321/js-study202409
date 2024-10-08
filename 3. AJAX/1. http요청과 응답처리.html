@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="video">
+      <iframe
+        width="640"
+        height="360"
+        src="https://www.youtube.com/embed/phuiiNCxRMg"
+        title="aespa 에스파 &#39;Supernova&#39; MV"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <button id="load">서버에서 정보 불러오기</button>
+
+    <ul id="content"></ul>
+
+    <script>
+      document.getElementById('load').addEventListener('click', (e) => {
+        const url = 'https://jsonplaceholder.typicode.com';
+        fetch(`${url}/users/1/posts`)
+          .then((res) => res.json())
+          .then((result) => {
+            // 화면에 렌더링
+            const $ul = document.getElementById('content');
+            let liTag = '';
+
+            result.forEach((b) => {
+              liTag += `
+            <li>
+              #글번호: ${b.id}, 제목: ${b.title}, 작성자id: ${b.userId}
+            </li>
+            `;
+            });
+
+            $ul.innerHTML += liTag;
+          });
+
+        /*
+        console.log('click 발생!');
+        const url = 'https://jsonplaceholder.typicode.com';
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `${url}/users/1/posts`);
+
+        // 요청 전송
+        xhr.send();
+
+        // 응답 정보 확인(로딩이 끝났다면 -> 요청에 대한 응답이 도착했다면)
+        xhr.onload = (e) => {
+          // 서버가 응답한 데이터는 JSON이라는 문자열 포맷이다.
+          // JSON은 javascript가 아님!
+          // JSON -> js로 변환해야 함.
+          // JSON.parse(): JSON -> JS
+          // JSON.stringify(): JS -> JSON
+          const response = xhr.response;
+
+          const boardList = JSON.parse(response);
+          console.log(boardList);
+
+          // 화면에 렌더링
+          const $ul = document.getElementById('content');
+          let liTag = '';
+
+          boardList.forEach((b) => {
+            liTag += `
+            <li>
+              #글번호: ${b.id}, 제목: ${b.title}, 작성자id: ${b.userId}
+            </li>
+            `;
+          });
+
+          $ul.innerHTML += liTag;
+        };
+        */
+      });
+    </script>
+  </body>
+</html>

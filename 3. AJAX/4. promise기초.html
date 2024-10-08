@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="show">서버요청!</button>
+
+    <script>
+      // 비동기 요청을 위한 함수.
+      // 비동기 호출의 순서를 보장하기 위해 callback 대신 promise 사용.
+      function get(url) {
+        // promise는 자바스크립트 비동기 통신(ajax)의 순서를 보장하고
+        // 데이터 처리를 용이하게 하기 위한 api입니다.
+        // resolve: 요청에 성공했을 때 실행할 함수
+        // reject: 요청에 실패했을 때 실행할 함수
+        const promise = new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', url);
+          xhr.send();
+          xhr.onload = (e) => {
+            if (xhr.status === 200) {
+              resolve(JSON.parse(xhr.response));
+            } else {
+              reject('error!');
+            }
+          };
+        });
+        // 마지막에 응답 결과를 가진 promise를 리턴한다.
+        return promise;
+      }
+
+      document.getElementById('show').addEventListener('click', (e) => {
+        // 버튼을 클릭하면 1. 두번째 회원을 조회
+        // 2번째 회원이 쓴 2. 글의 목록을 조회
+        // 해당 글의 3. 댓글을 조회.
+        const url = 'https://jsonplaceholder.typicode.com';
+
+        get(`${url}/users`)
+          .then((res) => get(`${url}/users/${res[1].id}/posts`))
+          .then((res) => get(`${url}/posts/${res[2].id}/comments`))
+          .then((res) => console.log(res));
+      });
+    </script>
+  </body>
+</html>

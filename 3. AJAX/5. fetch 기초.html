@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="show">서버요청!</button>
+
+    <script>
+      document.getElementById('show').addEventListener('click', (e) => {
+        const url = 'https://jsonplaceholder.typicode.com';
+
+        // 함수를 따로 선언할 필요 없는 fetch(url, 요청 정보)
+        fetch(`${url}/users`)
+          .then((usersResponse) => {
+            // 응답 promise 객체에서 json 데이터를 담은 promise를 꺼내기.
+            const json = usersResponse.json();
+            return json;
+          })
+          .then((users) => {
+            // 2. 두 번째 회원이 쓴 글 목록 조회
+            // 요청에 대한 응답이 오면 then 바깥으로 리턴.
+            return fetch(`${url}/users/${users[1].id}/posts`);
+          })
+          // 리턴된 promise 객체에서 json을 담은 promise 리턴하기
+          .then((postsResponse) => postsResponse.json())
+          .then((posts) => {
+            // 3. 해당 글의 댓글 조회
+            // 마찬가지로 요청에 대한 응답이 오면 then 바깥으로 리턴.
+            return fetch(`${url}/posts/${posts[2].id}/comments`);
+          })
+          .then((commentsResponse) => commentsResponse.json())
+          .then((comments) => console.log(comments)); // 마지막 출력.
+      });
+    </script>
+  </body>
+</html>

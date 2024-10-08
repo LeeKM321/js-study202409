@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="video">
+      <iframe
+        width="640"
+        height="360"
+        src="https://www.youtube.com/embed/phuiiNCxRMg"
+        title="aespa 에스파 &#39;Supernova&#39; MV"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div>글제목: <input type="text" id="title" /></div>
+    <div>글내용: <textarea id="content"></textarea></div>
+    <div>
+      <button id="add">등록</button>
+    </div>
+
+    <script>
+      document.getElementById('add').addEventListener('click', (e) => {
+        const url = 'https://jsonplaceholder.typicode.com';
+
+        const payload = {
+          title: document.getElementById('title').value,
+          body: document.getElementById('content').value,
+          userId: 1,
+        };
+
+        // get 이외의 요청 방식에서는 url과 함께 요청에 관련된 정보를
+        // 객체 형태로 전달하셔야 합니다. (method, headers, body)
+        fetch(`${url}/posts`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+
+        /*
+        console.log('click 발생!');
+        const url = 'https://jsonplaceholder.typicode.com';
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('POST', `${url}/posts`);
+
+        // 요청과 함께 전달할 데이터 세팅하기.
+        const payload = {
+          title: document.getElementById('title').value,
+          body: document.getElementById('content').value,
+          userId: 1,
+        };
+
+        // 요청 헤더에 payload의 type을 명시해야 함.
+        xhr.setRequestHeader('content-type', 'application/json');
+
+        // 요청 전송(순수 자바스크립트 객체를 JSON으로 변환해서 보내야 합니다.)
+        xhr.send(JSON.stringify(payload));
+
+        // 응답 정보 확인(로딩이 끝났다면 -> 요청에 대한 응답이 도착했다면)
+        xhr.onload = (e) => {
+          console.log(xhr.response);
+        };
+        */
+      });
+    </script>
+  </body>
+</html>
